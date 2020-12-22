@@ -51,7 +51,25 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
+  /// Create a list of pages to make the code shorter and better readability
+  ///
+  // final _pageNavigation = [
+  //   HomePage(),
+  //   TasksPage(),
+  //   AppsPage(),
+  //   NotificationPage(),
+  //   ProfilePage(),
+  // ];
+
   Widget _buildBody(int index) {
+    /// Check if index is in range
+    /// else return Not Found widget
+    ///
+    // if (index <= 4)
+    // return _pageNavigation[index];
+    // else
+    // return Text('Not Found');
+
     switch (index) {
       case 0:
         return HomePage();
@@ -79,37 +97,39 @@ class _MainPageState extends State<MainPage> {
       type: BottomNavigationBarType.fixed,
       onTap: _getChangeBottomNav,
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.date_range), title: Text('Task')),
-        BottomNavigationBarItem(icon: Icon(Icons.apps), title: Text('Apps')),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.notification_important),
-            title: Text('Notification')),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.person), title: Text('Profile')),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+        BottomNavigationBarItem(icon: Icon(Icons.date_range), label: "Task"),
+        BottomNavigationBarItem(icon: Icon(Icons.apps), label: "Apps"),
+        BottomNavigationBarItem(icon: Icon(Icons.notification_important), label: 'Notification'),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
       ],
     );
   }
 
   void _getChangeBottomNav(int index) {
-    switch (index) {
-      case 0:
-        context.cubit<BottomNavCubit>().getHome();
-        break;
-      case 1:
-        context.cubit<BottomNavCubit>().getTasks();
-        break;
-      case 2:
-        context.cubit<BottomNavCubit>().getApps();
-        break;
-      case 3:
-        context.cubit<BottomNavCubit>().getNotification();
-        break;
-      case 4:
-        context.cubit<BottomNavCubit>().getProfile();
-        break;
-      default:
-    }
+    /// Only one fuction to update the index
+    if (index <= 4)
+      context.cubit<BottomNavCubit>().updateIndex(index);
+    else
+      print('index not in range');
+
+    // switch (index) {
+    //   case 0:
+    //     context.cubit<BottomNavCubit>().getHome();
+    //     break;
+    //   case 1:
+    //     context.cubit<BottomNavCubit>().getTasks();
+    //     break;
+    //   case 2:
+    //     context.cubit<BottomNavCubit>().getApps();
+    //     break;
+    //   case 3:
+    //     context.cubit<BottomNavCubit>().getNotification();
+    //     break;
+    //   case 4:
+    //     context.cubit<BottomNavCubit>().getProfile();
+    //     break;
+    //   default:
+    // }
   }
 }
