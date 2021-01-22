@@ -53,42 +53,22 @@ class _MainPageState extends State<MainPage> {
 
   /// Create a list of pages to make the code shorter and better readability
   ///
-  // final _pageNavigation = [
-  //   HomePage(),
-  //   TasksPage(),
-  //   AppsPage(),
-  //   NotificationPage(),
-  //   ProfilePage(),
-  // ];
+  final _pageNavigation = [
+    HomePage(),
+    TasksPage(),
+    AppsPage(),
+    NotificationPage(),
+    ProfilePage(),
+  ];
 
   Widget _buildBody(int index) {
     /// Check if index is in range
     /// else return Not Found widget
     ///
-    // if (index <= 4)
-    // return _pageNavigation[index];
-    // else
-    // return Text('Not Found');
-
-    switch (index) {
-      case 0:
-        return HomePage();
-        break;
-      case 1:
-        return TasksPage();
-        break;
-      case 2:
-        return AppsPage();
-        break;
-      case 3:
-        return NotificationPage();
-        break;
-      case 4:
-        return ProfilePage();
-        break;
-      default:
-        return Text('Not Found');
-    }
+    if (index <= 4)
+      return _pageNavigation[index];
+    else
+      return Text('Not Found');
   }
 
   Widget _buildBottomNav() {
@@ -107,29 +87,9 @@ class _MainPageState extends State<MainPage> {
   }
 
   void _getChangeBottomNav(int index) {
-    /// Only one fuction to update the index
     if (index <= 4)
       context.cubit<BottomNavCubit>().updateIndex(index);
     else
       print('index not in range');
-
-    // switch (index) {
-    //   case 0:
-    //     context.cubit<BottomNavCubit>().getHome();
-    //     break;
-    //   case 1:
-    //     context.cubit<BottomNavCubit>().getTasks();
-    //     break;
-    //   case 2:
-    //     context.cubit<BottomNavCubit>().getApps();
-    //     break;
-    //   case 3:
-    //     context.cubit<BottomNavCubit>().getNotification();
-    //     break;
-    //   case 4:
-    //     context.cubit<BottomNavCubit>().getProfile();
-    //     break;
-    //   default:
-    // }
   }
 }
