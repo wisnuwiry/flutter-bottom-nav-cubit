@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cubit/flutter_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../cubit/botttom_nav_cubit.dart';
 
@@ -16,7 +16,7 @@ class AppsPage extends StatelessWidget {
         ),
         RaisedButton(
           onPressed: () {
-            context.cubit<BottomNavCubit>().getNotification();
+            context.read<BottomNavCubit>().getNotification();
           },
           child: Text('GO TO NOTIFICATION'),
         )
